@@ -8,7 +8,9 @@
         {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
     </head>
     <body>
+        {% include 'design/nav.html.twig' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+         {% include 'design/footer.html.twig' %}
     </body>
 </html>
