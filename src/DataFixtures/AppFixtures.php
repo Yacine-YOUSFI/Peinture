@@ -58,24 +58,26 @@
                $categories[$i]->setDescription($faker->text());
                $categories[$i]->setSlug($faker->slug(3));
                $manager->persist($categories[$i]);
-           }
+           
             $peintures = Array();
-            for ($i = 0; $i < 2; $i++) {
-               $peintures[$i] = new Peinture();
-               $peintures[$i]->setNom($faker->words(3, true));
-               $peintures[$i]->setLargeur($faker->randomFloat(2, 20, 60));
-               $peintures[$i]->setHaut($faker->randomFloat(2, 20, 60));
-               $peintures[$i]->setDescription($faker->text());
-               $peintures[$i]->setPortfolio($faker->randomElement([true, false]));
-               $peintures[$i]->setEnVente($faker->randomElement([true, false]));
-               $peintures[$i]->setPrix($faker->randomFloat(2, 20, 60));
-               $peintures[$i]->setDatePublication($faker->dateTimeBetween('-30 days', 'now'));
-               $peintures[$i]->setDateRealisation($faker->dateTimeBetween('-30 days', 'now'));
-               $peintures[$i]->setSlug($faker->slug(3));
-               $peintures[$i]->addCategorie($categories[$i]);
-               $peintures[$i]->setUser($auteurs[$i]);
-               $manager->persist($peintures[$i]);
+            for ($j = 0; $j < 2; $j++) {
+               $peintures[$j] = new Peinture();
+               $peintures[$j]->setNom($faker->words(3, true));
+               $peintures[$j]->setLargeur($faker->randomFloat(2, 20, 60));
+               $peintures[$j]->setHaut($faker->randomFloat(2, 20, 60));
+               $peintures[$j]->setDescription($faker->text());
+               $peintures[$j]->setPortfolio($faker->randomElement([true, false]));
+               $peintures[$j]->setEnVente($faker->randomElement([true, false]));
+               $peintures[$j]->setPrix($faker->randomFloat(2, 20, 60));
+               $peintures[$j]->setDatePublication($faker->dateTimeBetween('-30 days', 'now'));
+               $peintures[$j]->setDateRealisation($faker->dateTimeBetween('-30 days', 'now'));
+               $peintures[$j]->setSlug($faker->slug(3));
+               $peintures[$j]->setFile('tt.jpg');
+               $peintures[$j]->addCategorie($categories[$i]);
+               $peintures[$j]->setUser($auteurs[$j]);
+               $manager->persist($peintures[$j]);
            }
+        }
 
            $manager->flush();
        }
